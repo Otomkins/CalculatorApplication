@@ -21,3 +21,26 @@ C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder
 C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_Code.dll
 C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_Code.pdb
 C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.csproj.CopyComplete
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_Code.exe
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.exe
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.deps.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.runtimeconfig.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.runtimeconfig.dev.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.dll
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_WPF.pdb
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_Code.dll
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\bin\Debug\netcoreapp3.1\Calculator_Code.pdb
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.csprojAssemblyReference.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF_MarkupCompile.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF_MarkupCompile.lref
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.g.resources
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.AssemblyInfoInputs.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.AssemblyInfo.cs
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.csproj.CoreCompileInputs.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.csproj.CopyComplete
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.dll
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.pdb
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\Calculator_Application\Calculator_WPF\obj\Debug\netcoreapp3.1\Calculator_WPF.genruntimeconfig.cache
