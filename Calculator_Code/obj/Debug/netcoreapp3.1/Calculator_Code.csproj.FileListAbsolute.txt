@@ -1,0 +1,13 @@
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.exe
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.deps.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.runtimeconfig.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.runtimeconfig.dev.json
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.dll
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\bin\Debug\netcoreapp3.1\Calculator_Code.pdb
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.csprojAssemblyReference.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.AssemblyInfoInputs.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.AssemblyInfo.cs
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.csproj.CoreCompileInputs.cache
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.dll
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.pdb
+C:\Career\Sparta Global\Academy\Labs\Eng73\1 - Core\Lab_09_Exceptions\New folder\Calculator_Application\Calculator_Application\Calculator_Code\obj\Debug\netcoreapp3.1\Calculator_Code.genruntimeconfig.cache

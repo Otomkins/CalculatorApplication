@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Calculator_Code/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Calculator_Code.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Calculator_Code.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Calculator_Code/1.0.0": {
+      "type": "project",
+      "path": "../Calculator_Code/Calculator_Code.csproj",
+      "msbuildProject": "../Calculator_Code/Calculator_Code.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Calculator_Code >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\otomk\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj",
+      "projectName": "Calculator_WPF",
+      "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj",
+      "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
+      "outputPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj": {
+              "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

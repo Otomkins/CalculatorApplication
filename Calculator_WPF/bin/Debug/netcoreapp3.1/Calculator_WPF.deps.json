@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Calculator_WPF/1.0.0": {
+        "dependencies": {
+          "Calculator_Code": "1.0.0"
+        },
+        "runtime": {
+          "Calculator_WPF.dll": {}
+        }
+      },
+      "Calculator_Code/1.0.0": {
+        "runtime": {
+          "Calculator_Code.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Calculator_WPF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Calculator_Code/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
