@@ -172,37 +172,77 @@ namespace Calculator_WPF
 
                 if (_operation == "") // Handles digit deletion for first value
                 {
-                    var num1 = _number1.ToString(); // Converted to evaluate length
-                    if (num1.Length == 1) // Backspacing with one value left will always result in a zero
+                    var num1String = _number1.ToString(); // Converted to evaluate length
+                    var textboxString = HistoryTextDisplay.Text.ToString(); // Variables to reference length of values
+                    var resultTextboxString = ResultTextDisplay.Text.ToString(); // Used to maintain decimal in the value when backspacing
+
+                    if (num1String.Length == 1) // Backspacing with one value left will always result in a zero
                     {
-                        _number1 = 0;
-                        ResultTextDisplay.Text = _number1.ToString();
-                        HistoryTextDisplay.Text = _number1.ToString();
+                        if (textboxString.Contains('.')) // Maintains first digit when followed by a decimal and backspace is used
+                        {
+                            ResultTextDisplay.Text = resultTextboxString.Substring(0, textboxString.Length - 1);
+                            HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                        }
+                        else // Normal functionality for deleting a single digit value. Value becomes zero
+                        {
+                            _number1 = 0;
+                            ResultTextDisplay.Text = num1String;
+                            HistoryTextDisplay.Text = num1String;
+                        }
                     }
                     else // Uses Substring to return string value with one less index. Then converts this back to a double value
                     {
-                        _number1 = Convert.ToDouble(_number1.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
-                        ResultTextDisplay.Text = _number1.ToString();
-                        HistoryTextDisplay.Text = _number1.ToString();
+                        if (textboxString[num1String.Length - 2] == '.') // Maintains decimal in value when deleting the following digit
+                        {                                               // This string is used to assign the numerical value with a decimal within
+                            _number1 = Convert.ToDouble(num1String.Substring(0, ResultTextDisplay.Text.Length - 1));
+                            ResultTextDisplay.Text = resultTextboxString.Substring(0, textboxString.Length - 1);
+                            HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                        }
+                        else // Normal functionality to remove digits from a value
+                        {
+                            _number1 = Convert.ToDouble(num1String.Substring(0, ResultTextDisplay.Text.Length - 1));
+                            ResultTextDisplay.Text = _number1.ToString();
+                            HistoryTextDisplay.Text = _number1.ToString();
+                        }
                     }
                 }
-                else  // Handles digit deletion for second value. Uses same functionality as for the first value.
+                else  // Handles digit deletion for second value. Uses similar functionality as for the first value
                 {
                     if (_number2 == null)
                         return;
 
-                    var num2 = _number2.ToString();
-                    if (num2.Length == 1)
+                    var num2String = _number2.ToString();
+                    var textboxString = HistoryTextDisplay.Text.ToString();
+                    var resultTextboxString = ResultTextDisplay.Text.ToString();
+
+                    if (num2String.Length == 1)
                     {
-                        _number2 = 0;
-                        ResultTextDisplay.Text = _number2.ToString();
-                        HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
+                        if (_number1.ToString().Count(c => c == '.') != textboxString.Count(c => c == '.')) // Second value verification
+                        {                                           // Maintains first digit when followed by a decimal and backspace is used
+                            ResultTextDisplay.Text = num2String;
+                            HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                        }
+                        else // Normal functionality for deleting a single digit for the second value. Returns to operation selection
+                        {
+                            _number2 = null;
+                            ResultTextDisplay.Text = $"{_operation}";
+                            HistoryTextDisplay.Text = $"{_number1} {_operation}";
+                        }
                     }
                     else
                     {
-                        _number2 = Convert.ToDouble(_number2.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
-                        ResultTextDisplay.Text = _number2.ToString();
-                        HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
+                        if (textboxString[num2String.Length - 2] == '.') // Maintains decimal in value when deleting the following digit
+                        {                                               // This string is used to assign the numerical value with a decimal within
+                            _number2 = Convert.ToDouble(num2String.Substring(0, ResultTextDisplay.Text.Length - 1));
+                            ResultTextDisplay.Text = resultTextboxString.Substring(0, textboxString.Length - 1);
+                            HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                        }
+                        else // Normal functionality to remove digits from a value
+                        {
+                            _number2 = Convert.ToDouble(num2String.Substring(0, ResultTextDisplay.Text.Length - 1));
+                            ResultTextDisplay.Text = _number2.ToString();
+                            HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
+                        }
                     }
                 }
             }
@@ -227,22 +267,39 @@ namespace Calculator_WPF
             }
         }
 
-        private void DecimalButton_Click(object sender, RoutedEventArgs e) // NOT IMPLEMENTED
+        private void DecimalButton_Click(object sender, RoutedEventArgs e)
         {
             if(_divideByZeroLock == false)
             {
-                if(_operation == "")
+                if(_operation == "") // Indicates that the button event affects the first value
                 {
-                    if(!HistoryTextDisplay.Text.Contains("."))
-                    {
+                    if (_number2 == null && _equationComplete == true) // Used to verify that the equation has been completed
+                    {                                                 // Value represents '0.' when the decimal button is first to be pressed
+                        ResultTextDisplay.Text = "";
+                        HistoryTextDisplay.Text = "0";
+                        _equationComplete = false;
+                        _number1 = null;
+                    }
+
+                    if (!HistoryTextDisplay.Text.Contains(".")) // Allows addition of a decimal point if the value does not include one
+                    {                                          // Number button click events respond differently to this
+                        if(_number1 is null)
+                            _number1 = 0; // Assigned when the decimal button is pressed first so that it displays correctly
+
                         ResultTextDisplay.Text = $"{_number1}.";
                         HistoryTextDisplay.Text += ".";
                     }
                 }
-                else
+                else // Indicates that the button event affects the second value. Uses similar functionality as for the first value
                 {
-                    if(_number1.ToString().Count(c => c == '.') == HistoryTextDisplay.Text.ToString().Count(c => c == '.'))
-                    {
+                    if(_number1.ToString().Count(c => c == '.') == HistoryTextDisplay.Text.ToString().Count(c => c == '.')) // Second value verification
+                    {                                                   // Allows addition of a decimal point if the value does not include one 
+                        if (_number2 is null)
+                        {
+                            _number2 = 0;
+                            HistoryTextDisplay.Text += " 0";
+                        }
+
                         ResultTextDisplay.Text = $"{_number2}.";
                         HistoryTextDisplay.Text += ".";
                     }
@@ -267,7 +324,7 @@ namespace Calculator_WPF
                 if (_number1 == null) // If the first value has not been assigned, it is given a value. Avoids null checks
                     _number1 = 0;
 
-                if (_operation == "") // Indicated that button events effect the first value
+                if (_operation == "") // Indicates that the button event affects the first value
                 {
                     if(HistoryTextDisplay.Text.Contains(".")) // Allows additonal numbers after a decimal point
                     {
@@ -281,7 +338,7 @@ namespace Calculator_WPF
                     HistoryTextDisplay.Text = _number1.ToString();
 
                 }
-                else // Indicated that button events effect the second value. Uses same functionality as for the first value.
+                else // Indicates that the button event affects the second value. Uses similar functionality as for the first value
                 {
                     if (_number2 == null)
                         _number2 = 0;
