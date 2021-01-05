@@ -230,7 +230,24 @@ namespace Calculator_WPF
         private void DecimalButton_Click(object sender, RoutedEventArgs e) // NOT IMPLEMENTED
         {
             if(_divideByZeroLock == false)
-                return;
+            {
+                if(_operation == "")
+                {
+                    if(!HistoryTextDisplay.Text.Contains("."))
+                    {
+                        ResultTextDisplay.Text = $"{_number1}.";
+                        HistoryTextDisplay.Text += ".";
+                    }
+                }
+                else
+                {
+                    if(_number1.ToString().Count(c => c == '.') == HistoryTextDisplay.Text.ToString().Count(c => c == '.'))
+                    {
+                        ResultTextDisplay.Text = $"{_number2}.";
+                        HistoryTextDisplay.Text += ".";
+                    }
+                }
+            }
         }
 
         private void NumberButton_Click(object sender, RoutedEventArgs e) // Registers pressed digits to be used in equations
@@ -252,18 +269,44 @@ namespace Calculator_WPF
 
                 if (_operation == "") // Indicated that button events effect the first value
                 {
-                    _number1 = (_number1 * 10) + Convert.ToDouble(b.Content); // Allows additional numbers to be added in sequence
+                    if(HistoryTextDisplay.Text.Contains(".")) // Allows additonal numbers after a decimal point
+                    {
+                        HistoryTextDisplay.Text += $"{b.Content}";
+                        _number1 = Convert.ToDouble(HistoryTextDisplay.Text);
+                    }
+                    else
+                        _number1 = (_number1 * 10) + Convert.ToDouble(b.Content); // Allows additional numbers to be added in sequence
+
                     ResultTextDisplay.Text = _number1.ToString();
                     HistoryTextDisplay.Text = _number1.ToString();
+
                 }
                 else // Indicated that button events effect the second value. Uses same functionality as for the first value.
                 {
                     if (_number2 == null)
-                    {
-                        HistoryTextDisplay.Text = $"{_number1} {_operation} {b.Content}";
                         _number2 = 0;
+
+                    if(HistoryTextDisplay.Text.Contains(".") && _number1.ToString().Contains(".") == false)
+                    {
+                        HistoryTextDisplay.Text += $"{b.Content}";
+                        var findDec = HistoryTextDisplay.Text.ToString();
+                        int index = findDec.IndexOf($"{_operation}");
+
+                        var decimalSecondNum = findDec.Remove(0, index + 1);
+                        _number2 = Convert.ToDouble(decimalSecondNum);
                     }
-                    _number2 = (_number2 * 10) + Convert.ToDouble(b.Content);
+                    else if(HistoryTextDisplay.Text.Count(c => c == '.') == 2)
+                    {
+                        HistoryTextDisplay.Text += $"{b.Content}";
+                        var findDec = HistoryTextDisplay.Text.ToString();
+                        int index = findDec.IndexOf($"{_operation}");
+
+                        var decimalSecondNum = findDec.Remove(0, index + 1);
+                        _number2 = Convert.ToDouble(decimalSecondNum);
+                    }
+                    else
+                        _number2 = (_number2 * 10) + Convert.ToDouble(b.Content);
+
                     ResultTextDisplay.Text = _number2.ToString();
                     HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
                 }
