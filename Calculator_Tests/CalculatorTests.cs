@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Calculator_Code;
+using System;
 
 namespace Calculator_Tests
 {
@@ -7,65 +8,114 @@ namespace Calculator_Tests
     {
         readonly CalculatorService _cs = new CalculatorService();
 
-        [TestCase(5, 10, 15)]
-        [TestCase(-20, 11, -9)]
-        [TestCase(-100, -33, -133)]
-        public void AddTEST(double a, double b, double expected)
+        // ADDITION TESTS
+        [Category("Addition Tests")]
+        [Test]
+        public void WhenAddingTwoNumbers_ReturnsResult()
         {
-            var result = _cs.AddNumbers(a, b);
-            Assert.AreEqual(expected, result);
-
+            Assert.That(_cs.AddNumbers(5, 10), Is.EqualTo(15));
         }
 
-
-        [TestCase(40, 28, 12)]
-        [TestCase(10, 20, -10)]
-        [TestCase(-30, -15, -15)]
-        public void SubtractTEST(double a, double b, double expected)
+        [Category("Addition Tests")]
+        [Test]
+        public void WhenAddingTwoNegativeNumbers_ReturnsResult()
         {
-            var result = _cs.SubtractNumbers(a, b);
-            Assert.AreEqual(expected, result);
+            Assert.That(_cs.AddNumbers(-20, -13), Is.EqualTo(-33));
         }
 
-
-        [TestCase(6, 6, 36)]
-        [TestCase(13, 0, 0)]
-        [TestCase(-5, -5, 25)]
-        public void MultiplyTEST(double a, double b, double expected)
+        [Category("Addition Tests")]
+        [Test]
+        public void WhenAddingPositiveAndNegativeNumber_ReturnsResult()
         {
-            var result = _cs.MultiplyNumbers(a, b);
-            Assert.AreEqual(expected, result);
+            Assert.That(_cs.AddNumbers(11, -20), Is.EqualTo(-9));
         }
 
-
-        [TestCase(50, 5, 10)]
-        [TestCase(-18, 3, -6)]
-        [TestCase(-9, -3, 3)]
-        public void DivideTEST(double a, double b, double expected)
+        // SUBTRACTION TESTS
+        [Category("Subtraction Tests")]
+        [Test]
+        public void WhenSubtractingTwoNumbers_ReturnsResult()
         {
-            var result = _cs.DivideNumbers(a, b);
-            Assert.AreEqual(expected, result);
+            Assert.That(_cs.SubtractNumbers(40, 28), Is.EqualTo(12));
         }
 
+        [Category("Subtraction Tests")]
+        [Test]
+        public void WhenSubtractingTwoNegativeNumbers_ReturnsResult()
+        {
+            Assert.That(_cs.SubtractNumbers(-40, -17), Is.EqualTo(-23));
+        }
 
-        //[TestCase(1, 0)]
-        //[TestCase(0, 0)]
-        //[Test]
-        //public void DivideByZeroTEST(double a, double b)
-        //{
-        //    Assert.Throws<DivideByZeroException>(() =>
-        //    {
-        //        _cs.DivideNumbers(a, b);
-        //    });
-        //}
+        [Category("Subtraction Tests")]
+        [Test]
+        public void WhenSubtractingPositiveAndNegativeNumber_ReturnsResult()
+        {
+            Assert.That(_cs.SubtractNumbers(22, -9), Is.EqualTo(31));
+        }
 
-        //[TestCase(1, 0)]
-        //[TestCase(0, 0)]
-        //[Test]
-        //public void DivideByZeroTEST2(double a, double b)
-        //{
-        //    var ex = Assert.Throws<DivideByZeroException>(() => CalculatorMethods.Divide(a, b));
-        //    Assert.AreEqual("", ex.Message);
-        //}
+        // MULTIPLICATION TESTS
+        [Category("Multiplication Tests")]
+        [Test]
+        public void WhenMultiplyingTwoNumbers_ReturnsResult()
+        {
+            Assert.That(_cs.MultiplyNumbers(6, 7), Is.EqualTo(42));
+        }
+
+        [Category("Multiplication Tests")]
+        [Test]
+        public void WhenMultiplyingTwoNegativeNumbers_ReturnsResult()
+        {
+            Assert.That(_cs.MultiplyNumbers(-4, -17), Is.EqualTo(68));
+        }
+
+        [Category("Multiplication Tests")]
+        [Test]
+        public void WhenMultiplyingPositiveAndNegativeNumber_ReturnsResult()
+        {
+            Assert.That(_cs.MultiplyNumbers(16, -5), Is.EqualTo(-80));
+        }
+
+        // DIVISION TESTS
+        // MULTIPLICATION TESTS
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingTwoNumbers_ReturnsResult()
+        {
+            Assert.That(_cs.DivideNumbers(60, 4), Is.EqualTo(15));
+        }
+
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingTwoNegativeNumbers_ReturnsResult()
+        {
+            Assert.That(_cs.DivideNumbers(-39, -3), Is.EqualTo(13));
+        }
+
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingPositiveAndNegativeNumber_ReturnsResult()
+        {
+            Assert.That(_cs.DivideNumbers(-18, 9), Is.EqualTo(-2));
+        }
+
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingZeroByNumber_ReturnsZero()
+        {
+            Assert.That(_cs.DivideNumbers(0, 45), Is.Zero);
+        }
+
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingNumberByZero_ThrowsDivideByZeroException()
+        {
+            Assert.Throws<DivideByZeroException>(() => { double? v = _cs.DivideNumbers(10, 0); });
+        }
+
+        [Category("Division Tests")]
+        [Test]
+        public void WhenDividingNumberByZero_ThrowsExceptionWithMessage()
+        {
+            Assert.That(() => _cs.DivideNumbers(10, 0), Throws.Exception.With.Message.EqualTo("You cannot divide by zero"));
+        }
     }
 }

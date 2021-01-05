@@ -20,14 +20,9 @@ namespace Calculator_Code
         }
         public double? DivideNumbers(double? a, double? b)
         {
-            try
-            {
-                return a / b;
-            }
-            catch(DivideByZeroException ex)
-            {
-                throw new DivideByZeroException($"You cannot divide by zero. Exception Message: {ex.Message}");
-            }
+            if (b == 0)
+                throw new DivideByZeroException("You cannot divide by zero");
+            return a / b;
         }
     }
 }
