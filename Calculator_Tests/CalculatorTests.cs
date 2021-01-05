@@ -6,7 +6,7 @@ namespace Calculator_Tests
 {
     public class Tests
     {
-        readonly CalculatorService _cs = new CalculatorService();
+        readonly CalculatorService _cs = new CalculatorService(); // Used to test methods within 'CalculatorService'
 
         // ADDITION TESTS
         [Category("Addition Tests")]
@@ -75,7 +75,6 @@ namespace Calculator_Tests
         }
 
         // DIVISION TESTS
-        // MULTIPLICATION TESTS
         [Category("Division Tests")]
         [Test]
         public void WhenDividingTwoNumbers_ReturnsResult()
@@ -94,7 +93,7 @@ namespace Calculator_Tests
         [Test]
         public void WhenDividingPositiveAndNegativeNumber_ReturnsResult()
         {
-            Assert.That(_cs.DivideNumbers(-18, 9), Is.EqualTo(-2));
+            Assert.That(_cs.DivideNumbers(18, -9), Is.EqualTo(-2));
         }
 
         [Category("Division Tests")]

@@ -6,23 +6,15 @@ namespace Calculator_Code
 {
     public class CalculatorService
     {
-        public double? AddNumbers(double? a, double? b)
-        {
-            return a + b;
-        }
-        public double? SubtractNumbers(double? a, double? b)
-        {
-            return a - b;
-        }
-        public double? MultiplyNumbers(double? a, double? b)
-        {
-            return a * b;
-        }
-        public double? DivideNumbers(double? a, double? b)
-        {
-            if (b == 0)
-                throw new DivideByZeroException("You cannot divide by zero");
-            return a / b;
-        }
+        // Calculator service layer created to have a seperation of concerns
+        // These methods use only numerical values for calculation
+
+        public double? AddNumbers(double? a, double? b) => a + b;
+
+        public double? SubtractNumbers(double? a, double? b) => a - b;
+
+        public double? MultiplyNumbers(double? a, double? b) => a * b;
+
+        public double? DivideNumbers(double? a, double? b) => b == 0 ? throw new DivideByZeroException("You cannot divide by zero") : a / b;
     }
 }

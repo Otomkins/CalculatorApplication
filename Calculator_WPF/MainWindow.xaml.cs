@@ -19,19 +19,28 @@ namespace Calculator_WPF
 {
     public partial class MainWindow : Window
     {
-        readonly CalculatorCode _cc = new CalculatorCode();
+        readonly CalculatorCode _cc = new CalculatorCode(); // 'CalculatorCode' interacts with backend code in 'CalculatorService'
 
-        double? number1 = null;
-        double? number2 = null;
-        string operation = "";
-        bool equationComplete = false;
-        bool divideByZeroLock = false;
+        // EQUATION VARIABLES
+        double? _number1 = null; // Values used for equations and to be displayed in calculator history text
+        double? _number2 = null; // Null used in conditional statements for verification
+
+        string _operation = ""; // Used to display selected operation in calculator history text
+
+        // CONDITIONAL VARIABLES
+        bool _equationComplete = false;  // Removes ability to use backspace and edit end equation result (When true) 
+                                        // Clear or further calculations (Using +, -, /, *) reset this
+
+        bool _divideByZeroLock = false; // Features of the calculator are locked when there is a divide by zero (When true)
+                                       // Only the clear 'C' key resets this
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+
+        // OPERATION BUTTON CLICK EVENTS & METHODS
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             DetermineOperation("+");
@@ -52,54 +61,54 @@ namespace Calculator_WPF
             DetermineOperation("/");
         }
 
-        private void DetermineOperation(string op)
-        {
-            if (divideByZeroLock == false)
+        private void DetermineOperation(string op) // Determines which operation will be used in the equation
+        {                                         // Displays this on the calculator once selected
+            if (_divideByZeroLock == false)
             {
-                if (operation == "")
-                    HistoryTextDisplay.Text = $"{number1} {op}";
+                _operation = $"{op}"; // Assigns operation by selected button
 
-                operation = $"{op}";
-                ResultTextDisplay.Text = $"{op}";
-                equationComplete = false;
-            }
+                HistoryTextDisplay.Text = $"{_number1} {op}"; // Displays the selected operation in the calculator history text
+                ResultTextDisplay.Text = $"{op}"; // Displays selected operation
+
+                _equationComplete = false; // Resumes normal use of the backspace button
+            }                             // Allows for further equations to be made using the previous result
         }
 
+
+        // EQUATION BUTTON CLICK EVENTS & METHODS
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (number2 == null)
+            if (_number2 == null) // Result cannot be created from equation if it is not complete
                 return;
             else
             {
-                switch (operation)
+                switch (_operation) // Determines what operation is being used and calls the required method
                 {
                     case "+":
-                        var r1 = _cc.Add(number1, number2);
-                        FullEquationHistoryDisplay(r1);
+                        var r1 = _cc.Add(_number1, _number2);
+                        FullEquationHistoryDisplay(r1); // Displays the full equation in the calculator history text
                         break;
 
                     case "-":
-                        var r2 = _cc.Subtract(number1, number2);
+                        var r2 = _cc.Subtract(_number1, _number2);
                         FullEquationHistoryDisplay(r2);
                         break;
 
                     case "*":
-                        var r3 = _cc.Multiply(number1, number2);
+                        var r3 = _cc.Multiply(_number1, _number2);
                         FullEquationHistoryDisplay(r3);
                         break;
 
                     case "/":
-                        var r4 = _cc.Divide(number1, number2);
-                        if (r4 != "Cannot divide by zero")
-                        {
+                        var r4 = _cc.Divide(_number1, _number2);
+                        if (r4 != "Cannot divide by zero") // If there is no devide by zero error, code functions as normal
                             FullEquationHistoryDisplay(r4);
-                        }
-                        else
+                        else // Dividing by zero displays an error on the calculator and locks most of the functions, requiring clearance
                         {
                             ResultTextDisplay.Text = "Press 'C' to clear";
                             HistoryTextDisplay.Text = r4;
-                            divideByZeroLock = true;
-                            number1 = null;
+                            _divideByZeroLock = true;
+                            _number1 = null;
                         }
                         break;
                 }
@@ -107,161 +116,158 @@ namespace Calculator_WPF
             }
         }
 
-        private void FinishEquation()
+        private void FinishEquation() // Common actions used after totalling an equation
         {
-            number2 = null;
-            operation = "";
-            equationComplete = true;
+            _number2 = null;
+            _operation = "";
+            _equationComplete = true;
         }
-        private void FullEquationHistoryDisplay(string result)
+       
+        private void FullEquationHistoryDisplay(string result) // Common actions to display equation and result after totalling
         {
-            ResultTextDisplay.Text = result;  // Displays answer through method
-            HistoryTextDisplay.Text = $"{number1} {operation} {number2} =";  // Displays equation
-            number1 = Convert.ToDouble(result);  // Changes number1 to result for further calculations
+            ResultTextDisplay.Text = result;
+            HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2} =";
+            _number1 = Convert.ToDouble(result);  // Result can be used in the next equation or cleared
         }
 
+
+        // CLEAR & BACKSPACE BUTTON CLICK EVENTS
         private void ClearEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            if(divideByZeroLock == false)
+            if(_divideByZeroLock == false)
             {
-                if (operation == "")
+                if (_operation == "") // Indicates that the first value is the entry that will be cleared
                 {
-                    number1 = null;
+                    _number1 = null;
                     HistoryTextDisplay.Text = "";
                 }
-                else
+                else // Indicates that the second value is the entry that will be cleared
                 {
-                    number2 = null;
-                    HistoryTextDisplay.Text = $"{number1} {operation}";
+                    _number2 = null;
+                    HistoryTextDisplay.Text = $"{_number1} {_operation}";
                 }
-                ResultTextDisplay.Text = "0";
+                ResultTextDisplay.Text = "0"; // Results display reflects that the entry has been cleared
             }
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        private void ClearButton_Click(object sender, RoutedEventArgs e) // Resets the calculator to a neutral state
         {
-            number1 = null;
-            number2 = null;
-            operation = "";
+            _number1 = null;
+            _number2 = null;
+            _operation = "";
             ResultTextDisplay.Text = "0";
             HistoryTextDisplay.Text = "";
-            divideByZeroLock = false;
+            _divideByZeroLock = false;
         }
 
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
         {
-            if(divideByZeroLock == false)
+            if(_divideByZeroLock == false)
             {
-                if (equationComplete == true)
+                if (_equationComplete == true) // Removes ability to use backspace on the equation result
                     return;
-                if (ResultTextDisplay.Text == "0")
-                    return; // If the value is empty, does nothing
 
-                //if (Regex.IsMatch(ResultTextDisplay.Text, @"[+\-/*]") && operation != "")
-                //    operation = "";
+                if (ResultTextDisplay.Text == "0") // If the value is empty, backspacing is not possible
+                    return;                       // Text display represents the value of the number being used
 
-                if (operation != "" && number2 == null)
-                    return;
-                else if (operation == "") // Handles digit deletion for first value
+                if (_operation == "") // Handles digit deletion for first value
                 {
-                    var num1 = number1.ToString();
-                    if (num1.Length == 1)
+                    var num1 = _number1.ToString(); // Converted to evaluate length
+                    if (num1.Length == 1) // Backspacing with one value left will always result in a zero
                     {
-                        number1 = 0;
-                        ResultTextDisplay.Text = number1.ToString();
-                        HistoryTextDisplay.Text = number1.ToString();
+                        _number1 = 0;
+                        ResultTextDisplay.Text = _number1.ToString();
+                        HistoryTextDisplay.Text = _number1.ToString();
                     }
-                    else
+                    else // Uses Substring to return string value with one less index. Then converts this back to a double value
                     {
-                        number1 = Convert.ToDouble(number1.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
-                        ResultTextDisplay.Text = number1.ToString();
-                        HistoryTextDisplay.Text = number1.ToString();
+                        _number1 = Convert.ToDouble(_number1.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
+                        ResultTextDisplay.Text = _number1.ToString();
+                        HistoryTextDisplay.Text = _number1.ToString();
                     }
                 }
-                else  // Handles digit deletion for second value
+                else  // Handles digit deletion for second value. Uses same functionality as for the first value.
                 {
-                    if (number2 == null)
+                    if (_number2 == null)
                         return;
-                    var num2 = number2.ToString();
+
+                    var num2 = _number2.ToString();
                     if (num2.Length == 1)
                     {
-                        number2 = 0;
-                        ResultTextDisplay.Text = number2.ToString();
-                        HistoryTextDisplay.Text = $"{number1} {operation} {number2}";
+                        _number2 = 0;
+                        ResultTextDisplay.Text = _number2.ToString();
+                        HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
                     }
                     else
                     {
-                        number2 = Convert.ToDouble(number2.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
-                        ResultTextDisplay.Text = number2.ToString();
-                        HistoryTextDisplay.Text = $"{number1} {operation} {number2}";
+                        _number2 = Convert.ToDouble(_number2.ToString().Substring(0, ResultTextDisplay.Text.Length - 1));
+                        ResultTextDisplay.Text = _number2.ToString();
+                        HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
                     }
                 }
             }
         }
 
+
+        // ADDITIONAL BUTTON CLICK EVENTS
         private void PositiveNegativeButton_Click(object sender, RoutedEventArgs e)
         {
-            if(divideByZeroLock == false)
+            if(_divideByZeroLock == false)
             {
-                if (operation == "")
+                if (_operation == "") // Indicates that the first value will changed between positive and negative
                 {
-                    number1 *= -1;
-                    ResultTextDisplay.Text = number1.ToString();
+                    _number1 *= -1;
+                    ResultTextDisplay.Text = _number1.ToString();
                 }
-                else
+                else // Indicates that the second value will changed between positive and negative
                 {
-                    number2 *= -1;
-                    ResultTextDisplay.Text = number2.ToString();
+                    _number2 *= -1;
+                    ResultTextDisplay.Text = _number2.ToString();
                 }
             }
         }
 
-        private void DecimalButton_Click(object sender, RoutedEventArgs e)
+        private void DecimalButton_Click(object sender, RoutedEventArgs e) // NOT IMPLEMENTED
         {
-            if(divideByZeroLock == false)
+            if(_divideByZeroLock == false)
                 return;
         }
 
-        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        private void NumberButton_Click(object sender, RoutedEventArgs e) // Registers pressed digits to be used in equations
         {
-            if (divideByZeroLock == false)
+            if (_divideByZeroLock == false)
             {
                 Button b = (Button)sender;
 
-                if (number2 == null && equationComplete == true)
-                {
+                if (_number2 == null && _equationComplete == true) // Used to verify that the equation has been completed
+                {                                                 // Starts a new equation if the result is not used for further calculations
                     ResultTextDisplay.Text = "";
                     HistoryTextDisplay.Text = $"{b.Content}";
-                    equationComplete = false;
-                    number1 = null;
+                    _equationComplete = false;
+                    _number1 = null;
                 }
 
-                if (number1 == null)
-                    number1 = 0;
+                if (_number1 == null) // If the first value has not been assigned, it is given a value. Avoids null checks
+                    _number1 = 0;
 
-                if (operation == "")
+                if (_operation == "") // Indicated that button events effect the first value
                 {
-                    number1 = (number1 * 10) + Convert.ToDouble(b.Content);
-                    ResultTextDisplay.Text = number1.ToString();
-                    HistoryTextDisplay.Text = number1.ToString();
+                    _number1 = (_number1 * 10) + Convert.ToDouble(b.Content); // Allows additional numbers to be added in sequence
+                    ResultTextDisplay.Text = _number1.ToString();
+                    HistoryTextDisplay.Text = _number1.ToString();
                 }
-                else
+                else // Indicated that button events effect the second value. Uses same functionality as for the first value.
                 {
-                    if (number2 == null)
+                    if (_number2 == null)
                     {
-                        HistoryTextDisplay.Text = $"{number1} {operation} {b.Content}";
-                        number2 = 0;
+                        HistoryTextDisplay.Text = $"{_number1} {_operation} {b.Content}";
+                        _number2 = 0;
                     }
-                    number2 = (number2 * 10) + Convert.ToDouble(b.Content);
-                    ResultTextDisplay.Text = number2.ToString();
-                    HistoryTextDisplay.Text = $"{number1} {operation} {number2}";
+                    _number2 = (_number2 * 10) + Convert.ToDouble(b.Content);
+                    ResultTextDisplay.Text = _number2.ToString();
+                    HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
                 }
             }
         }
-
-        //private void txtDisplay_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-
-        //}
     }
 }
