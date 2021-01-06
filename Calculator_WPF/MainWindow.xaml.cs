@@ -67,7 +67,9 @@ namespace Calculator_WPF
             {
                 _operation = $"{op}"; // Assigns operation by selected button
 
-                HistoryTextDisplay.Text = $"{_number1} {op}"; // Displays the selected operation in the calculator history text
+                if (_number2 == null) HistoryTextDisplay.Text = $"{_number1} {op}"; // Displays the selected operation in the calculator history text
+                else HistoryTextDisplay.Text = $"{_number1} {op} {_number2}"; // Displays changes of operation at the end of the equation
+
                 ResultTextDisplay.Text = $"{op}"; // Displays selected operation
 
                 _equationComplete = false; // Resumes normal use of the backspace button
@@ -78,8 +80,7 @@ namespace Calculator_WPF
         // EQUATION BUTTON CLICK EVENTS & METHODS
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_number2 == null) // Result cannot be created from equation if it is not complete
-                return;
+            if (_number2 == null) return; // Result cannot be created from equation if it is not complete   
             else
             {
                 switch (_operation) // Determines what operation is being used and calls the required method
@@ -158,17 +159,16 @@ namespace Calculator_WPF
             ResultTextDisplay.Text = "0";
             HistoryTextDisplay.Text = "";
             _divideByZeroLock = false;
+            _equationComplete = false;
         }
 
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
         {
             if(_divideByZeroLock == false)
             {
-                if (_equationComplete == true) // Removes ability to use backspace on the equation result
-                    return;
+                if (_equationComplete == true) return; // Removes ability to use backspace on the equation result        
 
-                if (ResultTextDisplay.Text == "0") // If the value is empty, backspacing is not possible
-                    return;                       // Text display represents the value of the number being used
+                if (ResultTextDisplay.Text == "0") return; // Backspacing is not possible with empty values
 
                 if (_operation == "") // Handles digit deletion for first value
                 {
@@ -186,15 +186,14 @@ namespace Calculator_WPF
                         else // Normal functionality for deleting a single digit value. Value becomes zero
                         {
                             _number1 = 0;
-                            ResultTextDisplay.Text = num1String;
-                            HistoryTextDisplay.Text = num1String;
+                            ResultTextDisplay.Text = "0";
+                            HistoryTextDisplay.Text = "0";
                         }
                     }
                     else // Uses Substring to return string value with one less index. Then converts this back to a double value
                     {
                         if (textboxString[num1String.Length - 2] == '.') // Maintains decimal in value when deleting the following digit
                         {                                               // This string is used to assign the numerical value with a decimal within
-                            _number1 = Convert.ToDouble(num1String.Substring(0, ResultTextDisplay.Text.Length - 1));
                             ResultTextDisplay.Text = resultTextboxString.Substring(0, textboxString.Length - 1);
                             HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
                         }
@@ -208,9 +207,8 @@ namespace Calculator_WPF
                 }
                 else  // Handles digit deletion for second value. Uses similar functionality as for the first value
                 {
-                    if (_number2 == null)
-                        return;
-
+                    if (_number2 == null) return;
+                        
                     var num2String = _number2.ToString();
                     var textboxString = HistoryTextDisplay.Text.ToString();
                     var resultTextboxString = ResultTextDisplay.Text.ToString();
@@ -219,8 +217,17 @@ namespace Calculator_WPF
                     {
                         if (_number1.ToString().Count(c => c == '.') != textboxString.Count(c => c == '.')) // Second value verification
                         {                                           // Maintains first digit when followed by a decimal and backspace is used
-                            ResultTextDisplay.Text = num2String;
-                            HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                            if(num2String == "0") // Removing a decimal in front of a zero has the same effect as using backspace on a zero
+                            {
+                                ResultTextDisplay.Text = $"{_operation}";
+                                HistoryTextDisplay.Text = $"{_number1} {_operation}";
+                            }
+                            else
+                            {
+                                ResultTextDisplay.Text = num2String;
+                                HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
+                            }
+                            _number2 = null;
                         }
                         else // Normal functionality for deleting a single digit for the second value. Returns to operation selection
                         {
@@ -231,10 +238,10 @@ namespace Calculator_WPF
                     }
                     else
                     {
-                        if (textboxString[num2String.Length - 2] == '.') // Maintains decimal in value when deleting the following digit
+                        if (resultTextboxString[num2String.Length - 2] == '.') // Maintains decimal in value when deleting the following digit
                         {                                               // This string is used to assign the numerical value with a decimal within
                             _number2 = Convert.ToDouble(num2String.Substring(0, ResultTextDisplay.Text.Length - 1));
-                            ResultTextDisplay.Text = resultTextboxString.Substring(0, textboxString.Length - 1);
+                            ResultTextDisplay.Text = resultTextboxString.Substring(0, resultTextboxString.Length - 1);
                             HistoryTextDisplay.Text = textboxString.Substring(0, textboxString.Length - 1);
                         }
                         else // Normal functionality to remove digits from a value
@@ -284,10 +291,14 @@ namespace Calculator_WPF
                     if (!HistoryTextDisplay.Text.Contains(".")) // Allows addition of a decimal point if the value does not include one
                     {                                          // Number button click events respond differently to this
                         if(_number1 is null)
+                        {
                             _number1 = 0; // Assigned when the decimal button is pressed first so that it displays correctly
+                            HistoryTextDisplay.Text += "0.";
+                        }
+                        else HistoryTextDisplay.Text += ".";
 
                         ResultTextDisplay.Text = $"{_number1}.";
-                        HistoryTextDisplay.Text += ".";
+                        
                     }
                 }
                 else // Indicates that the button event affects the second value. Uses similar functionality as for the first value
@@ -321,51 +332,66 @@ namespace Calculator_WPF
                     _number1 = null;
                 }
 
-                if (_number1 == null) // If the first value has not been assigned, it is given a value. Avoids null checks
-                    _number1 = 0;
-
+                if (_number1 == null) _number1 = 0; // If the first value has not been assigned, it is given a value. Avoids null checks
+                   
                 if (_operation == "") // Indicates that the button event affects the first value
                 {
                     if(HistoryTextDisplay.Text.Contains(".")) // Allows additonal numbers after a decimal point
                     {
+                        ResultTextDisplay.Text += $"{b.Content}";
                         HistoryTextDisplay.Text += $"{b.Content}";
-                        _number1 = Convert.ToDouble(HistoryTextDisplay.Text);
+
+                        if (b.Content.ToString() != "0") // The zero after the decimal will not register once converted
+                            _number1 = Convert.ToDouble(HistoryTextDisplay.Text); // The zero remains within the string to be converted after another entry
                     }
                     else
+                    {
                         _number1 = (_number1 * 10) + Convert.ToDouble(b.Content); // Allows additional numbers to be added in sequence
-
-                    ResultTextDisplay.Text = _number1.ToString();
-                    HistoryTextDisplay.Text = _number1.ToString();
-
+                        ResultTextDisplay.Text = _number1.ToString();
+                        HistoryTextDisplay.Text = _number1.ToString();
+                    }
                 }
                 else // Indicates that the button event affects the second value. Uses similar functionality as for the first value
                 {
-                    if (_number2 == null)
-                        _number2 = 0;
+                    if (_number2 == null) _number2 = 0;
+                       
+                    // The following code verifies that the second value will be used and in what scenario
+                    // Two conditional statements check for decimal points and handle the code accordingly
+                    // These check two of the scenarios: 1. value 1 has a decimal and value 2 doesnt and 2. Both values have decimals within them
 
-                    if(HistoryTextDisplay.Text.Contains(".") && _number1.ToString().Contains(".") == false)
-                    {
+                    if(HistoryTextDisplay.Text.Contains(".") && _number1.ToString().Contains(".") == false) // Verifies that the second value has a decimal
+                    {                                                                       // Following code allows digits to be added afterwards
+                        ResultTextDisplay.Text += $"{b.Content}";
                         HistoryTextDisplay.Text += $"{b.Content}";
-                        var findDec = HistoryTextDisplay.Text.ToString();
-                        int index = findDec.IndexOf($"{_operation}");
 
-                        var decimalSecondNum = findDec.Remove(0, index + 1);
-                        _number2 = Convert.ToDouble(decimalSecondNum);
+                        if (b.Content.ToString() != "0") // Handles zero's entered anytime after a decimal point
+                        {
+                            var findDec = HistoryTextDisplay.Text.ToString();
+                            int index = findDec.IndexOf($"{_operation}");
+                            var decimalSecondNum = findDec.Remove(0, index + 1); // Removes all characters in the string before the second value
+                            _number2 = Convert.ToDouble(decimalSecondNum); 
+                        }
                     }
-                    else if(HistoryTextDisplay.Text.Count(c => c == '.') == 2)
-                    {
+                    else if(HistoryTextDisplay.Text.Count(c => c == '.') == 2) // Verifies that the second value has a decimal
+                    {                                                         // Verifies during second possible outcome of both values including decimals
+                        ResultTextDisplay.Text += $"{b.Content}";
                         HistoryTextDisplay.Text += $"{b.Content}";
-                        var findDec = HistoryTextDisplay.Text.ToString();
-                        int index = findDec.IndexOf($"{_operation}");
 
-                        var decimalSecondNum = findDec.Remove(0, index + 1);
-                        _number2 = Convert.ToDouble(decimalSecondNum);
+                        if (b.Content.ToString() != "0")
+                        {
+                            var findDec = HistoryTextDisplay.Text.ToString();
+                            int index = findDec.IndexOf($"{_operation}");
+                            var decimalSecondNum = findDec.Remove(0, index + 1);
+                            _number2 = Convert.ToDouble(decimalSecondNum);
+                        }
                     }
-                    else
+                    else // Normal scenario of adding digits to the second value with no decimals involved
+                    {
                         _number2 = (_number2 * 10) + Convert.ToDouble(b.Content);
+                        ResultTextDisplay.Text = _number2.ToString();
+                        HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
+                    }
 
-                    ResultTextDisplay.Text = _number2.ToString();
-                    HistoryTextDisplay.Text = $"{_number1} {_operation} {_number2}";
                 }
             }
         }

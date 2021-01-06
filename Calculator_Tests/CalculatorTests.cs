@@ -30,6 +30,14 @@ namespace Calculator_Tests
             Assert.That(_cs.AddNumbers(11, -20), Is.EqualTo(-9));
         }
 
+        [Category("Addition Tests")]
+        [Test]
+        public void WhenAddingTwoNumbers_ReturnsCorrectRoundedResult()
+        {
+            Assert.That(_cs.AddNumbers(5.06, 5), Is.EqualTo(10.06)); // Without rounding, returns '5.059999....'
+        }
+
+
         // SUBTRACTION TESTS
         [Category("Subtraction Tests")]
         [Test]
@@ -52,6 +60,14 @@ namespace Calculator_Tests
             Assert.That(_cs.SubtractNumbers(22, -9), Is.EqualTo(31));
         }
 
+        [Category("Subtraction Tests")]
+        [Test]
+        public void WhenSubtractingTwoNumbers_ReturnsCorrectRoundedResult()
+        {
+            Assert.That(_cs.SubtractNumbers(10.06, 5), Is.EqualTo(5.06)); // Without rounding, returns '5.059999....'
+        }
+
+
         // MULTIPLICATION TESTS
         [Category("Multiplication Tests")]
         [Test]
@@ -73,6 +89,7 @@ namespace Calculator_Tests
         {
             Assert.That(_cs.MultiplyNumbers(16, -5), Is.EqualTo(-80));
         }
+
 
         // DIVISION TESTS
         [Category("Division Tests")]
