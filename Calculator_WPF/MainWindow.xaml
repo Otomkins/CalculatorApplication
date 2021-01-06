@@ -25,8 +25,8 @@
             </Grid.RowDefinitions>
 
             <!-- Display Text Boxes-->
-            <TextBox x:Name="ResultTextDisplay" IsReadOnly="True" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="30" BorderThickness="0" Grid.Row="0" Grid.ColumnSpan="4" TextChanged="txtDisplay_TextChanged" FontWeight="Bold" Background="#FF252525" Foreground="White">0</TextBox>
-            <TextBox x:Name="HistoryTextDisplay" IsReadOnly="True" TextAlignment="Left" VerticalAlignment="Top" FontSize="18" BorderThickness="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" TextChanged="txtDisplay_TextChanged" Background="#FF252525" Foreground="White"/>
+            <TextBox x:Name="ResultTextDisplay" IsReadOnly="True" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="30" BorderThickness="0" Grid.Row="0" Grid.ColumnSpan="4" FontWeight="Bold" Background="#FF252525" Foreground="White">0</TextBox>
+            <TextBox x:Name="HistoryTextDisplay" IsReadOnly="True" TextAlignment="Left" VerticalAlignment="Top" FontSize="18" BorderThickness="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="#FF252525" Foreground="White"/>
 
             <!-- Row 1 Buttons (CE, C, <=, +) -->
             <Button x:Name="ClearEntryButton" Grid.Row="1" Grid.Column="0" Click="ClearEntryButton_Click" Background="#FFA6A6A6" FontSize="22">CE</Button>
