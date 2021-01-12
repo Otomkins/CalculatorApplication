@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rSEhNDSCIrXd4Gj3zHwz9o7cOKGhbaOjwqC9j5vxqEUcq3jTiDGkhSD9dWFM1ab4Bqthp9mLMQ7i+BCQb0pvOw==",
+  "dgSpecHash": "2EfscTiEqfih5ZLwLefeg1KTLdTUbPXkg/HFTnsBn+sZR/qjPj3oXerPqpFR5CGAFv/neQXqDKg8K+sm2Wkj6Q==",
   "success": true,
-  "projectFilePath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Tests\\Calculator_Tests.csproj",
+  "projectFilePath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Tests\\Calculator_Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\otomk\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Users\\otomk\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",

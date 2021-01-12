@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj": {}
+    "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_WPF\\Calculator_WPF.csproj": {}
   },
   "projects": {
-    "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj": {
+    "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj",
+        "projectUniqueName": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj",
         "projectName": "Calculator_Code",
-        "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj",
+        "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj",
         "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
-        "outputPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\obj\\",
+        "outputPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,14 +56,14 @@
         }
       }
     },
-    "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj": {
+    "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_WPF\\Calculator_WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj",
+        "projectUniqueName": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_WPF\\Calculator_WPF.csproj",
         "projectName": "Calculator_WPF",
-        "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\Calculator_WPF.csproj",
+        "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_WPF\\Calculator_WPF.csproj",
         "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
-        "outputPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_WPF\\obj\\",
+        "outputPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_WPF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -79,8 +79,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj": {
-                "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj"
+              "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj": {
+                "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj"
               }
             }
           }

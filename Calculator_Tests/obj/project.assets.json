@@ -4644,11 +4644,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Tests\\Calculator_Tests.csproj",
+      "projectUniqueName": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Tests\\Calculator_Tests.csproj",
       "projectName": "Calculator_Tests",
-      "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Tests\\Calculator_Tests.csproj",
+      "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Tests\\Calculator_Tests.csproj",
       "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
-      "outputPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Tests\\obj\\",
+      "outputPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4664,8 +4664,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj": {
-              "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj"
+            "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj": {
+              "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj"
             }
           }
         }

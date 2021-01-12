@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj",
+      "projectUniqueName": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj",
       "projectName": "Calculator_Code",
-      "projectPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\Calculator_Code.csproj",
+      "projectPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\Calculator_Code.csproj",
       "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
-      "outputPath": "C:\\Career\\Sparta Global\\Academy\\Labs\\Eng73\\1 - Core\\Lab_09_Exceptions\\Calculator_Application\\Calculator_Code\\obj\\",
+      "outputPath": "C:\\GitHub\\2021\\CalculatorApplication\\Calculator_Code\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
